@@ -24,7 +24,7 @@ class User {
 		}
 	}
 	toJSON () {
-		return {};
+		return this.data;
 	}
 
 }

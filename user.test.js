@@ -52,3 +52,15 @@ test('it has a toJSON method', () => {
 	let user = new User(1158);
 	expect(user.toJSON()).toBeDefined();
 });
+
+test('it has a toJSON method that returns an object', () => {
+	let user = new User(1158);
+	expect(typeof user.toJSON()).toBe("object");
+});
+
+test('it has a toJSON method that returns an object that matches the internal state', () => {
+	let user = new User(1158);
+	//Note how the data root is abstracted away from the client side.
+	expect(user.toJSON().user.name).toEqual(user.data.user.name);
+});
+
