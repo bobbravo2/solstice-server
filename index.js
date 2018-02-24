@@ -1,5 +1,6 @@
 const express = require('express');
 const User = require('./user');
+const Users = require('./users');
 const app = express();
 const PORT = process.env.PORT || 3001;
 const ENV = process.env.ENV || 'dev';
@@ -12,15 +13,21 @@ app.get(
 );
 
 app.get(
-	'/user/:user_id',
+	'/user/:user_id?',
 	(
 		request,
 		response
 	) => {
-		console.log('fetch request for id', request.params.user_id);
 		try {
-			let user = new User(request.params.user_id);
-			response.json(user.toJSON());
+			let serverResponse = {};
+			if (request.params.user_id) {
+				console.log('GET request for /user/:id', request.params.user_id);
+				serverResponse  = new User(request.params.user_id);
+			} else {
+				console.log('GET request for /user/');
+				serverResponse  = new Users();
+			}
+			response.json(serverResponse.toJSON());
 		} catch (e) {
 			response.status(400);
 			if ('dev' === ENV || 'stage' === ENV) {
