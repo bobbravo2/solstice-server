@@ -23,6 +23,10 @@ class User {
 			this.data.records = JSON.parse(records.replace('/n', ''));
 		}
 	}
+	toJSON () {
+		return {};
+	}
+
 }
 
 module.exports = User;

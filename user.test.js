@@ -47,3 +47,8 @@ test('it loads records based on the user id', () => {
 	expect(user.data.records[0].savings).toBeDefined();
 	expect(user.data.records[0]["zip-code"]).toBeDefined();
 });
+
+test('it has a toJSON method', () => {
+	let user = new User(1158);
+	expect(user.toJSON()).toBeDefined();
+});
