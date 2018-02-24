@@ -1,0 +1,16 @@
+[
+{"year":"2017","month":"1","kwh":"1500","solar-kwh":"0","utility-kwh":"1500","bill":"205.55","savings":"0","zip-code":"02130"},
+{"year":"2017","month":"2","kwh":"1350","solar-kwh":"0","utility-kwh":"1350","bill":"184.99","savings":"0","zip-code":"02130"},
+{"year":"2017","month":"3","kwh":"1150","solar-kwh":"0","utility-kwh":"1150","bill":"157.58","savings":"0","zip-code":"02130"},
+{"year":"2017","month":"4","kwh":"1000","solar-kwh":"150","utility-kwh":"850","bill":"124.04","savings":"12.99","zip-code":"02130"},
+{"year":"2017","month":"5","kwh":"1500","solar-kwh":"350","utility-kwh":"1150","bill":"144.04","savings":"19.81","zip-code":"02130"},
+{"year":"2017","month":"6","kwh":"730","solar-kwh":"350","utility-kwh":"380","bill":"94.14","savings":"2.99","zip-code":"02130"},
+{"year":"2017","month":"7","kwh":"500","solar-kwh":"400","utility-kwh":"100","bill":"70.04","savings":"1.32","zip-code":"02130"},
+{"year":"2017","month":"8","kwh":"1200","solar-kwh":"550","utility-kwh":"650","bill":"89.07","savings":"7.26","zip-code":"02130"},
+{"year":"2017","month":"9","kwh":"900","solar-kwh":"650","utility-kwh":"250","bill":"34.26","savings":"8.58","zip-code":"02119"},
+{"year":"2017","month":"10","kwh":"1118","solar-kwh":"580","utility-kwh":"538","bill":"73.72","savings":"7.66","zip-code":"02119"},
+{"year":"2017","month":"11","kwh":"1098","solar-kwh":"400","utility-kwh":"698","bill":"95.65","savings":"5.28","zip-code":"02119"},
+{"year":"2017","month":"12","kwh":"987","solar-kwh":"200","utility-kwh":"787","bill":"107.84","savings":"2.64","zip-code":"02119"},
+{"year":"2018","month":"1","kwh":"1358","solar-kwh":"288","utility-kwh":"1070","bill":"146.62","savings":"3.80","zip-code":"02119"},
+{"year":"2018","month":"2","kwh":"1409","solar-kwh":"209","utility-kwh":"1200","bill":"164.44","savings":"2.76","zip-code":"02119"}
+]
