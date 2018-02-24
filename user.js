@@ -19,11 +19,8 @@ class User {
 		if ( !this.isNewRecord ) {
 			const data = fs.readFileSync(`data/${$user_id}.json`, {encoding: 'utf-8'});
 			this.data = JSON.parse(data.replace('/n', ''));
-
-			console.log(
-				'data',
-				data
-			);
+			const records = fs.readFileSync(`data/records/${$user_id}.json`, {encoding: 'utf-8'});
+			this.data.records = JSON.parse(records.replace('/n', ''));
 		}
 	}
 }
