@@ -1,0 +1,11 @@
+{
+  "name": "solstice-crm-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Robert Gregor <robertgregor@icloud.com>",
+  "license": "Copyright Robert Gregor"
+}
