@@ -11,3 +11,13 @@ The CSV files **MUST** maintain the following headers:
 
 
 Once a new CSV file has been generated, run `./update-records-from-csv.sh` and new records will be generated. Note that the user_id **MUST** match the file name from the root json object. (IE `data/1158.json.user.id === data/records/1158.json`) - think of this as a foreign key constraint in an RDBMS.
+
+## Future Features
+- [ ] Add NREL model for solar generation based on ZIP code and SAM model [solar data](https://developer.nrel.gov/docs/solar/solar-resource-v1/)
+```
+GET https://developer.nrel.gov/api/solar/solar_resource/v1.json?api_key=6ZbT0IyPwegJhy4fSyvm1jrLtkWkpmz8RIengGe1&address=02129
+```
+## Known Bugs
+
+- [ ] Hardcoded Validation Logic
+- [ ] 

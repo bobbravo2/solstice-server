@@ -23,7 +23,10 @@ class User {
 			this.data.records = JSON.parse(records.replace('/n', ''));
 			this.data.records.forEach((row, index) => {
 				//Computed columns
-				this.data.records[index].timestamp = new Date(row.year, row.month);
+				this.data.records[index].timestamp = new Date(row.year, (row.month - 1));
+				//Parse our savings into a float, get the absolute value
+				//  (in case data interchange formats change) and then make it negative for the UI
+				this.data.records[index].savings =  - Math.abs(parseFloat(row.savings))
 			})
 		}
 	}

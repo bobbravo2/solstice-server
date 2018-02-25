@@ -69,6 +69,12 @@ test('user records have a computed timestamp column based on month and day', () 
 	expect(user.data.records[0].timestamp).toBeDefined();
 															//Js Date with seconds
 															// @link https://stackoverflow.com/questions/3143070/javascript-regex-iso-datetime
-	let timestamp = new Date(user.data.records[0].year, user.data.records[0].month);
+															// Date uses a 0 index month
+	let timestamp = new Date(user.data.records[0].year, (user.data.records[0].month - 1));
 	expect(user.data.records[0].timestamp).toEqual(timestamp);
+});
+
+test('user records should return negative values for savings', () => {
+	let user = new User(1158);
+	expect(user.data.records[0].savings).toBeLessThanOrEqual(0);
 });
