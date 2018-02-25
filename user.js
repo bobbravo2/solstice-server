@@ -21,6 +21,10 @@ class User {
 			this.data = JSON.parse(data.replace('/n', ''));
 			const records = fs.readFileSync(`data/records/${$user_id}.json`, {encoding: 'utf-8'});
 			this.data.records = JSON.parse(records.replace('/n', ''));
+			this.data.records.forEach((row, index) => {
+				//Computed columns
+				this.data.records[index].timestamp = new Date(row.year, row.month);
+			})
 		}
 	}
 	toJSON () {

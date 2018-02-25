@@ -64,3 +64,11 @@ test('it has a toJSON method that returns an object that matches the internal st
 	expect(user.toJSON().user.name).toEqual(user.data.user.name);
 });
 
+test('user records have a computed timestamp column based on month and day', () => {
+	let user = new User(1158);
+	expect(user.data.records[0].timestamp).toBeDefined();
+															//Js Date with seconds
+															// @link https://stackoverflow.com/questions/3143070/javascript-regex-iso-datetime
+	let timestamp = new Date(user.data.records[0].year, user.data.records[0].month);
+	expect(user.data.records[0].timestamp).toEqual(timestamp);
+});
