@@ -1,5 +1,11 @@
 # Energy Management Dashboard - Server
 
+## Usage
+See the package.json for scripts:
+* `yarn watch` - runs the server with Nodemon (needs to be installed globally)
+* `yarn start` - runs the server on port 3001
+* `yarn test` - runs unit tests
+
 ## Updating records
 
 the `data/csv-source/` directory is used to build the `JSON` objects inside of the `/data/records/` folder. 
@@ -20,4 +26,3 @@ GET https://developer.nrel.gov/api/solar/solar_resource/v1.json?api_key=6ZbT0IyP
 ## Known Bugs
 
 - [ ] Hardcoded Validation Logic
-- [ ] 

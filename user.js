@@ -23,6 +23,9 @@ class User {
 		if ( !this.isNewRecord ) {
 			this.data = User.readUserProfile($user_id);
 			this.data.records = User.readUserRecords($user_id);
+			let totalSolar   = 0,
+			    totalUtility = 0,
+			    totalSavings = 0;
 			//Computed columns
 			this.data.records.forEach(
 				(
@@ -37,12 +40,26 @@ class User {
 					//  (in case data interchange formats change) and then make it negative for the UI
 					let absoluteValueSavings = Math.abs(parseFloat(row.savings));
 					this.data.records[index].savings = absoluteValueSavings === 0 ? 0 : (-absoluteValueSavings);
+					totalSavings += this.data.records[index].savings;
+					totalSolar += parseInt(
+						this.data.records[index]['solar-kwh'],
+						10
+					);
+					totalUtility += parseInt(
+						this.data.records[index]['utility-kwh'],
+						10
+					);
 				});
+			this.data.totalSavings = totalSavings;
+			this.data.totalSolar = totalSolar;
+			this.data.totalUtility = totalUtility;
+			this.data.totalMetricTonsCO2Avoided = totalSolar * 0.0007; //From EPA.gov
 			//Now that we have a computed timestamp, order the records by it
 			this.data.records = _.sortBy(
 				this.data.records,
 				['timestamp']
 			);
+
 		}
 	}
 
@@ -151,10 +168,10 @@ class User {
 				$data,
 				User.getRecordValidationRules()
 			) ) {
-			console.log(
-				'Validation failed',
-				$data
-			);
+			// console.log(
+			// 	'Validation failed',
+			// 	$data
+			// );
 			throw new Error(
 				`New Record Validation Failed`
 			);
