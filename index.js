@@ -8,6 +8,10 @@ const Users = require('./users');
 const app = express();
 const PORT = process.env.PORT || 3001;
 const ENV = process.env.ENV || 'dev';
+/**
+ * Edit End Point
+ * @param user_id (int) User id to edit
+ */
 app.post(
 	'/admin/:user_id',
 	jsonParser,
@@ -20,8 +24,7 @@ app.post(
 			() => {
 				console.log('Adding latency to show state transitions on client side');
 				next();
-			},
-			500
+			}
 		);
 	},
 	(
@@ -44,16 +47,33 @@ app.post(
 		response.json({error: false});
 	}
 );
+/**
+ * Create a new record
+ * @param user_id (int) user id to append the new record to.
+ */
 app.post(
 	'/admin/:user_id/create',
+	jsonParser,
 	(
 		request,
 		response
 	) => {
-		response.send('Hit the right endpoint');
-		response.end();
+		try {
+			User.create(
+				request.params.user_id,
+				request.body
+			);
+			response.json({error: false});
+		}
+		catch (e) {
+			response.json({error: e.toString()});
+		}
+
 	}
 );
+/**
+ * Read endpoint
+ */
 app.get(
 	'/user/:user_id?',
 	(

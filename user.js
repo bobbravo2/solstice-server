@@ -35,8 +35,14 @@ class User {
 					);
 					//Parse our savings into a float, get the absolute value
 					//  (in case data interchange formats change) and then make it negative for the UI
-					this.data.records[index].savings = -Math.abs(parseFloat(row.savings));
+					let absoluteValueSavings = Math.abs(parseFloat(row.savings));
+					this.data.records[index].savings = absoluteValueSavings === 0 ? 0 : (-absoluteValueSavings);
 				});
+			//Now that we have a computed timestamp, order the records by it
+			this.data.records = _.sortBy(
+				this.data.records,
+				['timestamp']
+			);
 		}
 	}
 
@@ -116,6 +122,54 @@ class User {
 				return /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(number);
 			}
 		};
+	}
+
+	/**
+	 * Creates a new user record
+	 * @param $user_id
+	 * @param $data
+	 */
+	static create (
+		$user_id,
+		$data
+	)
+	{
+		if ( !User.userProfileExists($user_id) ) {
+			throw new Error(`User profile (ID: ${parseInt(
+				$user_id,
+				10
+			)}) Not found`);
+		}
+		let missingKeys = _.difference(
+			_.keys($data),
+			_.keys(User.getRecordValidationRules())
+		);
+		if ( 0 !== missingKeys.length ) {
+			throw new Error("Validation Failed - object is missing required keys: " + JSON.stringify(missingKeys));
+		}
+		if ( !_.conformsTo(
+				$data,
+				User.getRecordValidationRules()
+			) ) {
+			console.log(
+				'Validation failed',
+				$data
+			);
+			throw new Error(
+				`New Record Validation Failed`
+			);
+		}
+		let OldRecords = User.readUserRecords($user_id);
+		let mergedRecords = _.merge(
+			OldRecords,
+			[$data]
+		);
+		//TODO create a Record class, and have it expose a
+		// timestamp for sorting of things before writing to disk
+		User.writeFileJSON(
+			`data/records/${$user_id}.json`,
+			JSON.stringify(mergedRecords)
+		);
 	}
 
 	/**
