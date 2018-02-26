@@ -5,23 +5,23 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-	"start": "node index.js",
-	"watch": "nodemon index.js"
+    "start": "node index.js",
+    "watch": "nodemon index.js"
   },
   "author": "Robert Gregor <robertgregor@icloud.com>",
   "devDependencies": {
     "jest": "^22.4.2"
   },
   "dependencies": {
-	"body-parser": "^1.18.2",
-	"deep-keys": "^0.5.0",
-	"express": "^4.16.2",
-	"lodash": "^4.17.5"
+    "body-parser": "^1.18.2",
+    "deep-keys": "^0.5.0",
+    "express": "^4.16.2",
+    "lodash": "^4.17.5"
   },
   "jest": {
-	"coveragePathIgnorePatterns": [
-	  "node_modules/",
-	  "data/*"
-	]
+    "coveragePathIgnorePatterns": [
+      "node_modules/",
+      "data/*"
+    ]
   }
 }
