@@ -42,7 +42,10 @@ app.get(
 
 	}
 );
-
+//TODO static file server
+app.get('*', function(request, response) {
+	response.sendFile(__dirname + '/../public/index.html');
+});
 app.listen(
 	PORT,
 	() => console.log(` Energy Management Dashboard - Server is running on ${PORT}`)
