@@ -21,7 +21,7 @@ Once a new CSV file has been generated, run `./update-records-from-csv.sh` and n
 ## Future Features
 - [ ] Add NREL model for solar generation based on ZIP code and SAM model [solar data](https://developer.nrel.gov/docs/solar/solar-resource-v1/)
 ```
-GET https://developer.nrel.gov/api/solar/solar_resource/v1.json?api_key=6ZbT0IyPwegJhy4fSyvm1jrLtkWkpmz8RIengGe1&address=02129
+GET https://developer.nrel.gov/api/solar/solar_resource/v1.json?api_key=&address=02129
 ```
 ## Known Bugs
 
